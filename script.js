@@ -22,6 +22,6 @@ let buttons = document.querySelectorAll('.btn');
 
 //Adicionando evento de click em todos os botoes e o metodo btnPress
 
-for(i=0, buttons.length>i , i++){
+for(i=0; buttons.length>i; i++){
     buttons[i].addEventListener('CLick', calc.btnPress);
 }
