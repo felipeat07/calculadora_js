@@ -53,3 +53,42 @@ h1{
     font-size: 22px;
     clear: both;
 }
+
+#buttons-container{
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.btn{
+    width: 50px;
+    height: 50px;
+    margin: 7.5px 7.5px;
+    line-height: 50px;
+    text-align: center;
+    color: white;
+    background-color: #354357;
+    font-weight: bold;
+    font-size: 18px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+#zero-btn{
+    width: 120px;
+}
+
+#equals-btn{
+    width: 120px;
+}
+
+#ac-btn{
+    margin-left: 6px;
+}
+
+#division-btn{
+    margin-left: 144px;
+}
