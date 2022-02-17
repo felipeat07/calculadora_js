@@ -6,6 +6,12 @@ class Calculator{
         this.reset=0;
     }
 
+    //limpa os valores do diplay
+    clearValues(){
+      calc.upperValue.textContent ='0';
+      calc.resultValue.textContent = '0';
+    }
+
     checkLastDigit(input, upperValue, reg) {
 
         if((
@@ -18,6 +24,31 @@ class Calculator{
         }
       }
 
+    //resolve a operação
+    resolution(){
+
+        //transforma a string em um array
+        let upperValueArray = (this.upperValue.textContent).split(" ");
+
+        //variável para armazenar o resultado
+        let result = 0;
+
+        for(let i=0; i <= upperValueArray.length; i++ ){
+          let actualItem = upperValueArray[i];
+
+          if(actualItem == '+'){
+            result = parseFloat(upperValueArray[i-1]) + parseFloat(upperValueArray[i-1]);
+          }
+
+        }
+
+        this.upperValue.textContent = result;
+        this.resultValue.textContent = result;
+
+
+      }
+
+
 
     btnPress(){
         let input = this.textContent;
@@ -25,15 +56,37 @@ class Calculator{
         //verificando se tem só numeros
         var reg = new RegExp('^\\d+$');
 
-        if(calc.checkLastDigit(input, upperValue, reg)) {
-            return false;
-          }
-    
-        if(upperValue == '0'){
-            calc.upperValue.textContent = input;
-        } else{
-            calc.upperValue.textContent += input;
+        if(input == 'AC'){
+          calc.clearValues();
+        } 
+        
+        else if(input == '='){
+          calc.resolution();
         }
+        
+        else {
+              // checa os valores, para nao adicionar dois operadores mat
+              if(calc.checkLastDigit(input, upperValue, reg)) {
+                return true;
+              }
+ 
+              //adiciona espaço entre os operadores
+              if(!reg.test(input)){
+                input = ` ${input} `;
+              }
+
+        
+            if(upperValue == '0'){
+                calc.upperValue.textContent = input;
+            } else{
+                calc.upperValue.textContent += input;
+            }
+
+          
+        }
+
+      
+
     }
 
 }
